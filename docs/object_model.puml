@@ -1,0 +1,38 @@
+@startuml
+
+class QSM {
+    + initial_state()
+    + event_check()
+    + exit_state()
+    + final_state()
+}
+
+object Stock {
+    + Acronym: str
+    + AskPrice: float
+    + BidPrice: float
+    + AskSize: int
+    + BidSize: int
+    + Date: int
+}
+
+class Algorithm {
+    + Setup()
+    + Evaluate(s: Stock)
+    + Cleanup()
+}
+
+class Test {
+    + StartYear: int
+    + EndYear: int
+    + Stocks: Stock[]
+
+    + Setup()
+    + Execute(a: Algorithm)
+    + Cleanup()
+}
+
+Test --|> QSM
+Algorithm --|> QSM
+
+@enduml
